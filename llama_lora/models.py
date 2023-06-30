@@ -14,6 +14,8 @@ from .config import Config
 from .globals import Global
 from .lib.get_device import get_device
 
+DEFAULT_MAX_MEMORY={0: "20GB", 1: "20GB", 2: "20GB", 3: "20GB"}
+
 
 def get_torch():
     return importlib.import_module('torch')
@@ -101,6 +103,7 @@ def _get_model_from_pretrained(
             device_map="auto",
             # ? https://github.com/tloen/alpaca-lora/issues/21
             # device_map={'': 0},
+            max_memory=DEFAULT_MAX_MEMORY,
             from_tf=from_tf,
             force_download=force_download,
             trust_remote_code=Config.trust_remote_code,
@@ -222,6 +225,7 @@ def get_model(
                 # ? https://github.com/tloen/alpaca-lora/issues/21
                 # device_map={'': 0},
                 device_map="auto",
+                max_memory=DEFAULT_MAX_MEMORY,
                 use_auth_token=Config.hf_access_token
             )
         elif device == "mps":
