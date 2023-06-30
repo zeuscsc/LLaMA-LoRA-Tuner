@@ -98,9 +98,9 @@ def _get_model_from_pretrained(
             model_name,
             load_in_8bit=Config.load_8bit,
             torch_dtype=torch.float16,
-            # device_map="auto",
+            device_map="auto",
             # ? https://github.com/tloen/alpaca-lora/issues/21
-            device_map={'': 0},
+            # device_map={'': 0},
             from_tf=from_tf,
             force_download=force_download,
             trust_remote_code=Config.trust_remote_code,
@@ -220,7 +220,8 @@ def get_model(
                 peft_model_name_or_path,
                 torch_dtype=torch.float16,
                 # ? https://github.com/tloen/alpaca-lora/issues/21
-                device_map={'': 0},
+                # device_map={'': 0},
+                device_map="auto",
                 use_auth_token=Config.hf_access_token
             )
         elif device == "mps":
