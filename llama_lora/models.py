@@ -107,7 +107,6 @@ def _get_model_from_pretrained(
         from_tf=False, force_download=False):
     torch = get_torch()
     device = get_device()
-    set_max_memory(torch.cuda.device_count())
     if device == "cuda":
         return model_class.from_pretrained(
             model_name,
