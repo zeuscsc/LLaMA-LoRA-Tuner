@@ -14,9 +14,9 @@ from .config import Config
 from .globals import Global
 from .lib.get_device import get_device
 
-GB_PER_GPU = "39GB"
+MEMORY_PER_GPU = "39GB"
 GPU_COUNT = 8
-DEFAULT_MAX_MEMORY= dict(zip(range(1, GPU_COUNT + 1), [GB_PER_GPU for _ in range(1, GPU_COUNT + 1)]))
+DEFAULT_MAX_MEMORY= dict(zip(range(0, GPU_COUNT), [MEMORY_PER_GPU for _ in range(0, GPU_COUNT)]))
 
 
 def get_torch():
