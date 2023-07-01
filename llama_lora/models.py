@@ -21,6 +21,10 @@ def set_max_memory(gpu_count=4, memory_per_gpu="19GB"):
     global MEMORY_PER_GPU
     global GPU_COUNT
     global DEFAULT_MAX_MEMORY
+    if gpu_count==4:
+        memory_per_gpu="19GB"
+    elif gpu_count==8:
+        memory_per_gpu="39GB"
     MEMORY_PER_GPU = memory_per_gpu
     GPU_COUNT = gpu_count
     DEFAULT_MAX_MEMORY= dict(zip(range(0, GPU_COUNT), [MEMORY_PER_GPU for _ in range(0, GPU_COUNT)]))
@@ -103,7 +107,7 @@ def _get_model_from_pretrained(
         from_tf=False, force_download=False):
     torch = get_torch()
     device = get_device()
-
+    set_max_memory(torch.cuda.device_count())
     if device == "cuda":
         return model_class.from_pretrained(
             model_name,
