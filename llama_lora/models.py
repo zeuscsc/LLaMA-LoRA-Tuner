@@ -14,10 +14,10 @@ from .config import Config
 from .globals import Global
 from .lib.get_device import get_device
 
-MEMORY_PER_GPU = "39GB"
-GPU_COUNT = 8
-DEFAULT_MAX_MEMORY= dict(zip(range(0, GPU_COUNT), [MEMORY_PER_GPU for _ in range(0, GPU_COUNT)]))
-def set_max_memory(gpu_count, memory_per_gpu):
+# MEMORY_PER_GPU = "39GB"
+# GPU_COUNT = 8
+# DEFAULT_MAX_MEMORY= dict(zip(range(0, GPU_COUNT), [MEMORY_PER_GPU for _ in range(0, GPU_COUNT)]))
+def set_max_memory(gpu_count=4, memory_per_gpu="19GB"):
     global MEMORY_PER_GPU
     global GPU_COUNT
     global DEFAULT_MAX_MEMORY
