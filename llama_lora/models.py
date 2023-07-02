@@ -21,10 +21,6 @@ def set_max_memory(gpu_count=4, memory_per_gpu="19GB"):
     global MEMORY_PER_GPU
     global GPU_COUNT
     global DEFAULT_MAX_MEMORY
-    if gpu_count==4:
-        memory_per_gpu="19GB"
-    elif gpu_count==8:
-        memory_per_gpu="39GB"
     MEMORY_PER_GPU = memory_per_gpu
     GPU_COUNT = gpu_count
     DEFAULT_MAX_MEMORY= dict(zip(range(0, GPU_COUNT), [MEMORY_PER_GPU for _ in range(0, GPU_COUNT)]))
